@@ -42,7 +42,6 @@ void pixelShowColor(int r, int g, int b) {
     sprintf(tempString1, "%s/%s", CHANNEL,TOPIC_NEOPIXEL_PUBLISH);
     sprintf(tempString2, "{\"id\":%d,\"R\":%d,\"G\":%d,\"B\":%d}", mqtt_robot_id, r, g, b);
     mqtt_publish(tempString1, tempString2, false);
-    Serial.println("pixel show msg");
     #endif
 }
 void pixelColorWave(int r, int g, int b) {
@@ -124,7 +123,7 @@ void rainbowFade2White(int wait, int rainbowLoops, int whiteLoops) {
             fadeVal = fadeMax;
         }
     }
-    delay(500);
+    // delay(500);
 }
 
 #else

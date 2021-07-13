@@ -32,14 +32,17 @@ void loopModes() {
         case MODE2:
         // What should happen on mode 2
         // mode_sensorTest();
-
+        whiteOverRainbow(75, 5);
+        // rainbowFade2White(3, 3, 1);
         break;
 
         // Mode 3 --------------------------------------------------------------
         case MODE3:
         // What should happen on mode 3
         delay(2000);
-        motors.write(200,200);
+        // motors.write(200,200);
+
+        distance_read();
         // delay(10000);
         // mode = BEGIN;
 

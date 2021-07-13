@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: PlatformIO CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5]
-       
+        python-version: [3.6]
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -30,6 +30,10 @@ jobs:
         pip install -U platformio
         platformio update
         
-    - name: Test with Platform IO
+    - name: Create sample config file
+      run: |
+        cp ./firmware/config/config_sample.h ./firmware/config/config.h
+
+    - name: Compile with Platform IO
       run: |
         platformio run

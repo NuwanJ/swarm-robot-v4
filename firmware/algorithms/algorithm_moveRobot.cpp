@@ -44,7 +44,7 @@ void algorithm_execute(){
     int d = distance_read();
     Serial.printf("algo_dist: %d\n", d);
 
-    if(d < 15){
+    if(d < 25){
         int random = (rand() % 100);
         int sign = (random%2 == 0) ? 1 : -1;
 
@@ -55,7 +55,7 @@ void algorithm_execute(){
         mqtt_delay(1000);
         motors.stop();
 
-        while(distance_read() < 20) {
+        while(distance_read() < 30) {
             // TODO: avoid infinity loop in here
             Serial.println("rotate until dist < 50\n");
             motors.write(75*sign,-75*sign);

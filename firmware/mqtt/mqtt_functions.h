@@ -25,3 +25,4 @@ void mqtt_handle();
 void mqtt_reconnect();
 
 void mqtt_delay(int time_in_ms);
+void mqtt_log(String message);

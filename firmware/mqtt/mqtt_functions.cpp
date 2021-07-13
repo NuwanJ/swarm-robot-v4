@@ -203,6 +203,19 @@ void mqtt_delay(int time_in_ms){
     }
 }
 
+void mqtt_log(String message) {
+
+    sprintf(tempString1, "%s/%s", CHANNEL,TOPIC_LOG);
+    sprintf(tempString2, "{\"id\":\"%d\",\"msg\":\"%s\"}", mqtt_robot_id, message.c_str());
+
+    int resp = client.publish(tempString1, tempString2, false);
+    Serial.print("mqtt log:\n\t");
+    Serial.println(tempString2);
+
+    if (resp == 1) Serial.println("mqtt_log: success");
+    else Serial.println("mqtt_log: failed");
+}
+
 #else
 
 void beginMQTT(){
@@ -214,5 +227,6 @@ void callback(char* topic, byte* message, unsigned int length){}
 void mqtt_handle(){}
 void mqtt_reconnect(){}
 void mqtt_delay(int time_in_ms){}
+void void mqtt_log(String message){}
 
 #endif
